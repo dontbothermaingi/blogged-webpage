@@ -5,6 +5,3 @@
 
 [build.environment]
 NODE_VERSION = "18.16.0" # or any version you're using locally that supports the required import
-
-[build]
-  functions = "functions"

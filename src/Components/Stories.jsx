@@ -23,7 +23,7 @@ function Stories (){
     const navigate = useNavigate()
 
     useEffect(()=>{
-        fetch('http://localhost:3000/stories')
+        fetch('http://127.0.0.1:1904/stories')
         .then(response => response.json())
         .then((data) => {
             setStories(data)
