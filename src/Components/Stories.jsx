@@ -147,44 +147,44 @@ function Stories (){
                     <Typography style={{fontFamily:'GT Bold'}} fontSize={"29px"} mb="20px" mt={'10px'}>Genres</Typography>
                     <Box display={'flex'} flexDirection={'column'} gap={'10px'}>
                         <Box display={'flex'} alignItems={'center'} gap={'20px'} onClick={() => setSelectedGenre('Business')}>
-                        <IconButton sx={{color:'white',color: selectedGenre === 'Business' ? '#2D2D2D' : 'white', backgroundColor: selectedGenre === 'Business' ? 'white' : '#2D2D2D', borderRadius:'10px', ":hover":{backgroundColor:"white", color:'#2D2D2D'}}} onClick={() => setSelectedGenre('Business')}>
+                        <IconButton sx={{color: selectedGenre === 'Business' ? '#2D2D2D' : 'white', backgroundColor: selectedGenre === 'Business' ? 'white' : '#2D2D2D', borderRadius:'10px', ":hover":{backgroundColor:"white", color:'#2D2D2D'}}} onClick={() => setSelectedGenre('Business')}>
                             <BusinessCenterOutlined sx={{ padding: '2px', fontSize: '25px' }} />
                         </IconButton>
 
                             <Typography style={{fontFamily:"GT Regular", cursor:'pointer'}} fontSize={'20px'}>Business</Typography>
                         </Box>
                         <Box display={'flex'} alignItems={'center'} gap={'20px'} onClick={() => setSelectedGenre('Entertainment')}>
-                            <IconButton sx={{color:'white',color: selectedGenre === 'Entertainment' ? '#2D2D2D' : 'white', backgroundColor: selectedGenre === 'Entertainment' ? 'white' : '#2D2D2D', borderRadius:'10px', ":hover":{backgroundColor:"white", color:'#2D2D2D'}}} onClick={() => setSelectedGenre('Entertainment')}>
+                            <IconButton sx={{color: selectedGenre === 'Entertainment' ? '#2D2D2D' : 'white', backgroundColor: selectedGenre === 'Entertainment' ? 'white' : '#2D2D2D', borderRadius:'10px', ":hover":{backgroundColor:"white", color:'#2D2D2D'}}} onClick={() => setSelectedGenre('Entertainment')}>
                                 <MusicNoteOutlined sx={{padding:'2px', fontSize:'25px'}}/>
                             </IconButton>
                             <Typography style={{fontFamily:"GT Regular", cursor:'pointer'}} fontSize={'20px'}>Entertainment</Typography>
                         </Box>
                         <Box display={'flex'} alignItems={'center'} gap={'20px'} onClick={() => setSelectedGenre('Food')}>
-                            <IconButton sx={{color:'white',color: selectedGenre === 'Food' ? '#2D2D2D' : 'white', backgroundColor: selectedGenre === 'Food' ? 'white' : '#2D2D2D', borderRadius:'10px', ":hover":{backgroundColor:"white", color:'#2D2D2D'}}} onClick={() => setSelectedGenre('Food')}>
+                            <IconButton sx={{color: selectedGenre === 'Food' ? '#2D2D2D' : 'white', backgroundColor: selectedGenre === 'Food' ? 'white' : '#2D2D2D', borderRadius:'10px', ":hover":{backgroundColor:"white", color:'#2D2D2D'}}} onClick={() => setSelectedGenre('Food')}>
                                 <Coffee sx={{padding:'2px', fontSize:"25px"}}/>
                             </IconButton>
                             <Typography style={{fontFamily:"GT Regular", cursor:'pointer'}} fontSize={'20px'}>Food</Typography>
                         </Box>
                         <Box display={'flex'} alignItems={'center'} gap={'20px'} onClick={() => setSelectedGenre('Sports')}>
-                            <IconButton sx={{color:'white',color: selectedGenre === 'Sports' ? '#2D2D2D' : 'white', backgroundColor: selectedGenre === 'Sports' ? 'white' : '#2D2D2D', borderRadius:'10px', ":hover":{backgroundColor:"white", color:'#2D2D2D'}}} onClick={() => setSelectedGenre('Sports')}>
+                            <IconButton sx={{color: selectedGenre === 'Sports' ? '#2D2D2D' : 'white', backgroundColor: selectedGenre === 'Sports' ? 'white' : '#2D2D2D', borderRadius:'10px', ":hover":{backgroundColor:"white", color:'#2D2D2D'}}} onClick={() => setSelectedGenre('Sports')}>
                                 <SportsFootballOutlined sx={{padding:'2px', fontSize:"25px"}}/>
                             </IconButton>
                             <Typography style={{fontFamily:"GT Regular", cursor:'pointer'}} fontSize={'20px'}>Sports</Typography>
                         </Box>
                         <Box display={'flex'} alignItems={'center'} gap={'20px'} onClick={() => setSelectedGenre('Nature')}>
-                            <IconButton sx={{color:'white',color: selectedGenre === 'Nature' ? '#2D2D2D' : 'white', backgroundColor: selectedGenre === 'Nature' ? 'white' : '#2D2D2D', borderRadius:'10px', ":hover":{backgroundColor:"white", color:'#2D2D2D'}}} onClick={() => setSelectedGenre('Nature')}>
+                            <IconButton sx={{color: selectedGenre === 'Nature' ? '#2D2D2D' : 'white', backgroundColor: selectedGenre === 'Nature' ? 'white' : '#2D2D2D', borderRadius:'10px', ":hover":{backgroundColor:"white", color:'#2D2D2D'}}} onClick={() => setSelectedGenre('Nature')}>
                                 <Pets sx={{padding:'2px', fontSize:"25px"}}/>
                             </IconButton>
                             <Typography style={{fontFamily:"GT Regular", cursor:'pointer'}} fontSize={'20px'}>Nature</Typography>
                         </Box>
                         <Box display={'flex'} alignItems={'center'} gap={'20px'} onClick={() => setSelectedGenre('Self-Help')}>
-                            <IconButton sx={{color:'white',color: selectedGenre === 'Self-Help' ? '#2D2D2D' : 'white', backgroundColor: selectedGenre === 'Self-Help' ? 'white' : '#2D2D2D', borderRadius:'10px', ":hover":{backgroundColor:"white", color:'#2D2D2D'}}} onClick={() => setSelectedGenre('Self-Help')}>
+                            <IconButton sx={{color: selectedGenre === 'Self-Help' ? '#2D2D2D' : 'white', backgroundColor: selectedGenre === 'Self-Help' ? 'white' : '#2D2D2D', borderRadius:'10px', ":hover":{backgroundColor:"white", color:'#2D2D2D'}}} onClick={() => setSelectedGenre('Self-Help')}>
                                 <Group sx={{padding:'2px', fontSize:"25px"}}/>
                             </IconButton>
                             <Typography style={{fontFamily:"GT Regular", cursor:'pointer'}} fontSize={'20px'}>Self-Help</Typography>
                         </Box>
                         <Box display={'flex'} alignItems={'center'} gap={'20px'} onClick={() => setSelectedGenre('Technology')}>
-                            <IconButton sx={{color:'white',color: selectedGenre === 'Technology' ? '#2D2D2D' : 'white', backgroundColor: selectedGenre === 'Technology' ? 'white' : '#2D2D2D', borderRadius:'10px', ":hover":{backgroundColor:"white", color:'#2D2D2D'}}} onClick={() => setSelectedGenre('Technology')}>
+                            <IconButton sx={{color: selectedGenre === 'Technology' ? '#2D2D2D' : 'white', backgroundColor: selectedGenre === 'Technology' ? 'white' : '#2D2D2D', borderRadius:'10px', ":hover":{backgroundColor:"white", color:'#2D2D2D'}}} onClick={() => setSelectedGenre('Technology')}>
                                 <AppSettingsAlt sx={{padding:'2px', fontSize:"25px"}}/>
                             </IconButton>
                             <Typography style={{fontFamily:"GT Regular", cursor:'pointer'}} fontSize={'20px'}>Technology</Typography>

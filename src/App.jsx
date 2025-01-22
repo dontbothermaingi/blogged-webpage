@@ -4,7 +4,7 @@ import Register from './Components/Register';
 import Login from './Components/Login';
 import StoryCreation from './Components/ShowCreation';
 import HomePage from './Components/Homepage';
-import jwtDecode from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 import Stories from './Components/Stories';
 import StoryRead from './Components/StoryRead';
 
