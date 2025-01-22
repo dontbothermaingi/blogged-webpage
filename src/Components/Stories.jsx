@@ -230,7 +230,7 @@ function Stories (){
 
                                 <CardMedia
                                     component={'img'}
-                                    image={story.images}
+                                    image={`http://127.0.0.1:1904/${story.images}`}
                                     alt="1"
                                     sx={{ borderRadius: '12px', objectFit: 'cover',}}
                                     
