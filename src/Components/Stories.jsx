@@ -23,7 +23,7 @@ function Stories (){
     const navigate = useNavigate()
 
     useEffect(()=>{
-        fetch('http://127.0.0.1:1904/stories')
+        fetch('https://blogged-server.onrender.com/stories')
         .then(response => response.json())
         .then((data) => {
             setStories(data)
@@ -230,7 +230,7 @@ function Stories (){
 
                                 <CardMedia
                                     component={'img'}
-                                    image={`http://127.0.0.1:1904/${story.images}`}
+                                    image={`https://blogged-server.onrender.com/${story.images}`}
                                     alt="1"
                                     sx={{ borderRadius: '12px', objectFit: 'cover',}}
                                     
