@@ -134,7 +134,7 @@ function StoryRead (){
 
                         <Box>
                             <img 
-                            src={story.images}
+                            src={`http://127.0.0.1:1904/${story.images}`}
                             alt="Image"
                             />
                         </Box>
