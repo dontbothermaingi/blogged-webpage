@@ -230,7 +230,7 @@ function Stories (){
 
                                 <CardMedia
                                     component={'img'}
-                                    image={story.image}
+                                    image={story.images}
                                     alt="1"
                                     sx={{ borderRadius: '12px', objectFit: 'cover',}}
                                     
