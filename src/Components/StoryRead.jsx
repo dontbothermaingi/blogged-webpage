@@ -134,7 +134,7 @@ function StoryRead (){
 
                         <Box>
                             <img 
-                            src={`https://blogged-server.onrender.com/story/${story.images}`}
+                            src={`https://blogged-server.onrender.com/${story.images}`}
                             alt="Image"
                             />
                         </Box>
