@@ -14,7 +14,7 @@ function StoryRead (){
     const [searchTerm, setSearchTerm] = useState("")
 
     useEffect(()=>{
-        fetch(`http://localhost:3000/stories/${storyId}`)
+        fetch(`http://127.0.0.1:1904/stories/${storyId}`)
         .then(response => response.json())
         .then((data) => {
             setStory(data);
