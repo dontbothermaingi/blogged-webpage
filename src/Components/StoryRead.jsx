@@ -14,7 +14,7 @@ function StoryRead (){
     const [searchTerm, setSearchTerm] = useState("")
 
     useEffect(()=>{
-        fetch(`https://blogged-server.onrender.com/${storyId}`)
+        fetch(`https://blogged-server.onrender.com/story/${storyId}`)
         .then(response => response.json())
         .then((data) => {
             setStory(data);
@@ -134,7 +134,7 @@ function StoryRead (){
 
                         <Box>
                             <img 
-                            src={`https://blogged-server.onrender.com/${story.images}`}
+                            src={`https://blogged-server.onrender.com/story/${story.images}`}
                             alt="Image"
                             />
                         </Box>
