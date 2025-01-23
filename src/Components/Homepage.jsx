@@ -4,6 +4,7 @@ import Book from "@mui/icons-material/Book";
 import { NavLink, useNavigate } from "react-router";
 import { LinkedIn } from "@mui/icons-material";
 import LightbulbOutlined from "@mui/icons-material/LightbulbOutlined";
+import GitHub from "@mui/icons-material/GitHub";
 
 
 function HomePage (){
@@ -42,6 +43,15 @@ function HomePage (){
                                     <LinkedIn sx={{fontSize:'33px'}}/>
                                 </IconButton>
                                 <Typography style={{fontFamily:'GT Bold', cursor:'pointer', color:'white'}} fontSize={'25px'}>Denis Maingi</Typography>
+                        </Box>
+                    </a>
+
+                    <a href={'https://github.com/dontbothermaingi'} style={{textDecoration:'none', color:'white'}}>
+                        <Box display={'flex'} flexDirection={'row'} alignItems={'center'}>
+                                <IconButton sx={{color:'white'}}>
+                                    <GitHub sx={{fontSize:'33px'}}/>
+                                </IconButton>
+                                <Typography style={{fontFamily:'GT Bold', cursor:'pointer', color:'white'}} fontSize={'25px'}>dontbothermaingi</Typography>
                         </Box>
                     </a>
 
