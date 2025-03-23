@@ -31,7 +31,7 @@ function Login ({onLogin}){
 
         if (!formData.username || !formData.password) {
             setOpenSnackBar(true);
-            setSuccessMessage('Please fill in all fields');
+            setSuccessMessage('Please fill in all fields!!');
             return;
         }
 
@@ -209,7 +209,7 @@ function Login ({onLogin}){
               anchorOrigin={{vertical:'top', horizontal:'center'}}
             >
                 <Alert
-                onClose={handleCloseSnackBar}
+                  onClose={handleCloseSnackBar}
                   severity={successMessage.startsWith('Failed') ? 'error': 'success'}
                   sx={{ width: '100%' }}
                 >
