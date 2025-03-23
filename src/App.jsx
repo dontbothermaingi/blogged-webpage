@@ -7,6 +7,7 @@ import HomePage from './Components/Homepage';
 import { jwtDecode } from 'jwt-decode';
 import Stories from './Components/Stories';
 import StoryRead from './Components/StoryRead';
+import Write from './Components/Write';
 
 function App() {
   const navigate = useNavigate();
@@ -48,6 +49,7 @@ function App() {
         <Route path='/' element={<HomePage />} />
         <Route path='/stories' element={<Stories />} />
         <Route path='/story-read/:storyId' element={<StoryRead />} />
+        <Route path='/write' element={<Write />} />
       </Routes>
     </>
   );

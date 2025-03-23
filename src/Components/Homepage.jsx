@@ -19,6 +19,10 @@ function HomePage (){
         navigate('/stories')
     }
 
+    function handleWrite(){
+        navigate('/write')
+    }
+
 
     return ( 
 
@@ -75,7 +79,7 @@ function HomePage (){
                 </Box>
 
                 <Box display={'flex'} alignItems={'center'} gap={'20px'}>
-                    <Typography style={{fontFamily:'GT Medium', cursor:'pointer'}} fontSize={'22px'} ml={'90px'}>Start Writing</Typography>
+                    <Typography style={{fontFamily:'GT Medium', cursor:'pointer'}} fontSize={'22px'} ml={'90px'} onClick={handleWrite}>Start Writing</Typography>
                     <Button sx={{color:'black', backgroundColor:'white', borderRadius:'25px'}} >
                         <Typography style={{fontFamily:'GT Medium', fontSize:'18px', padding:'7px'}} onClick={handleStories}>Read More</Typography>
                     </Button>
