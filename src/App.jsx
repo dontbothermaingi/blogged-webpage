@@ -2,7 +2,6 @@ import { Route, Routes, useNavigate } from 'react-router';
 import './App.css';
 import Register from './Components/Register';
 import Login from './Components/Login';
-import StoryCreation from './Components/ShowCreation';
 import HomePage from './Components/Homepage';
 import { jwtDecode } from 'jwt-decode';
 import Stories from './Components/Stories';
@@ -45,7 +44,6 @@ function App() {
       <Routes>
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login onLogin={handleLogin} />} />
-        <Route path='/story-creation' element={<StoryCreation />} />
         <Route path='/' element={<HomePage />} />
         <Route path='/stories' element={<Stories />} />
         <Route path='/story-read/:storyId' element={<StoryRead />} />

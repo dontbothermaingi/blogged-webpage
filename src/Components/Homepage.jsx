@@ -1,7 +1,6 @@
 import { Button, IconButton, Typography } from "@mui/material";
-import { Box, flexbox } from "@mui/system";
-import Book from "@mui/icons-material/Book";
-import { NavLink, useNavigate } from "react-router";
+import { Box} from "@mui/system";
+import { useNavigate } from "react-router";
 import { LinkedIn } from "@mui/icons-material";
 import LightbulbOutlined from "@mui/icons-material/LightbulbOutlined";
 import GitHub from "@mui/icons-material/GitHub";

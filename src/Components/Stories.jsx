@@ -23,7 +23,7 @@ function Stories (){
     const navigate = useNavigate()
 
     useEffect(()=>{
-        fetch('https://blogged-server.onrender.com/stories')
+        fetch('https://blogged-db.onrender.com/stories')
         .then(response => response.json())
         .then((data) => {
             setStories(data)
@@ -38,14 +38,16 @@ function Stories (){
         story.title.toLowerCase().includes(searchTerm.toLowerCase()) // Search filter
     );
 
-
-
     function handleHome(){
         navigate('/')
     }
 
     function handleStoryRead(storyId){
         navigate(`/story-read/${storyId}`)
+    }
+
+    function handleNewStory(){
+        navigate('/write')
     }
 
     const display = selectedGenre
@@ -118,6 +120,12 @@ function Stories (){
                     <Typography style={{fontFamily:'GT Bold'}} fontSize={'25px'}>Denis Maingi</Typography>
                 </Box>
                 </a>
+
+                <Box>
+                    <Button onClick={handleNewStory} sx={{color:'black', backgroundColor:'white', fontFamily:'GT Bold', fontSize:'18px', width:'120px', height:'40px'}} >
+                        <span style={{fontSize:'25px', marginRight:'10px'}}>+</span> New
+                    </Button>
+                </Box>
             </Box>
 
             <Box display={'flex'} justifyContent={'space-between'} flexDirection={'row'} margin={0}>
@@ -228,21 +236,24 @@ function Stories (){
                                 }}
                             >
 
-                                <CardMedia
-                                    component={'img'}
-                                    image={`https://blogged-server.onrender.com/${story.images}`}
-                                    alt="1"
-                                    sx={{ borderRadius: '12px', objectFit: 'cover',}}
-                                    
-
+                                <Box
+                                    sx={{
+                                        // Use `url()`
+                                        backgroundImage: `url(https://blogged-db.onrender.com${story.photo})`,
+                                        backgroundSize: "cover", // Ensure the image covers the box
+                                        backgroundPosition: "center", // Center the image
+                                        width: "100%", // Adjust width as needed
+                                        height: "auto", // Adjust height as needed
+                                        borderRadius:'15px',
+                                    }}
                                 >
                                     
-                                </CardMedia>
+                                </Box>
                                 <CardContent>
                                     <Box display={'flex'} flexDirection={'column'} justifyContent={'space-between'} height={'285px'}>
                                         <Box>
                                             <Typography style={{fontFamily:'GT Bold', color:'white'}} textAlign={'left'} fontSize={'35px'}>{story.title}</Typography>
-                                            <Typography style={{fontFamily:'GT Regular', color:'white'}} textAlign={'left'} fontSize={'20px'}>{story.contentparagraph1}</Typography>
+                                            <Typography style={{fontFamily:'GT Regular', color:'white'}} textAlign={'left'} fontSize={'20px'}>{story.paragraphs[0].paragraph}</Typography>
                                         </Box>
                                         <Box>
                                             <Typography style={{fontFamily:'GT Regular', color:'white'}} textAlign={'left'} fontSize={'16px'} display={'flex'} justifyContent={'flex-end'}>Author: {story.author}</Typography>

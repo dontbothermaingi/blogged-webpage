@@ -2,6 +2,7 @@ import { AddOutlined, DeleteForever, GitHub, LightbulbOutlined, LinkedIn } from 
 import { Alert, Button, FormControl, IconButton, MenuItem, Select, Snackbar, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router";
 
 function Write (){
 
@@ -10,7 +11,7 @@ function Write (){
         photo:"",
         author:"",
         category:"",
-        date: new Date(),
+        date: "",
         paragraphs:[]
     })
 
@@ -19,6 +20,7 @@ function Write (){
     const [openSnackBar, setOpenSnackBar] = useState(false)
     const [filePreview, setFilePreview] = useState("");
     const fileUploadRef = useRef();
+    const navigate = useNavigate();
 
     function handleChange(event){
         const {name,value} = event.target;
@@ -32,9 +34,12 @@ function Write (){
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
+
         if (file) {
           setFilePreview(URL.createObjectURL(file)); // Show preview
         }
+
+        console.log(file)
 
         setFormData(prevFormData => ({
             ...prevFormData,
@@ -81,9 +86,9 @@ function Write (){
         formDataToSend.append("photo", formData.photo)
         formDataToSend.append("paragraphs", JSON.stringify([...formData.paragraphs]))
         
+        console.log(formData)
 
-
-        fetch('https://blogged-server.onrender.com/stories', {
+        fetch('https://blogged-db.onrender.com/stories', {
             method:'POST',
             body:formDataToSend
         })
@@ -99,7 +104,7 @@ function Write (){
                 title:"",
                 photo:"",
                 author:"",
-                date: new Date(),
+                date: "",
                 paragraphs:[]
             })
 
@@ -126,8 +131,20 @@ function Write (){
         fileUploadRef.current.click();
     }
 
+    function handleStories(){
+        navigate('/stories')
+    }
+
     const storyCategories = [
     "Adventure",
+    "Business",
+    "Entertainment",
+    "Sports",
+    "Food",
+    "Nature",
+    "Self-Help",
+    "Health",
+    "Technology",
     "Mystery",
     "Fantasy",
     "Science Fiction",
@@ -148,8 +165,6 @@ function Write (){
     "Cyberpunk",
     "Paranormal"
     ];
-
-    console.log(storyCategories);
 
 
     return ( 
@@ -189,7 +204,7 @@ function Write (){
 
                     <Box display={'flex'} gap={'20px'} alignItems={'center'}>
                         <Box display={'flex'} flexDirection={'row'} alignItems={'center'}>
-                            <Button sx={{color:'black', backgroundColor:'white', fontFamily:'GT Bold', fontSize:'18px'}} >
+                            <Button onClick={handleStories} sx={{color:'black', backgroundColor:'white', fontFamily:'GT Bold', fontSize:'18px'}} >
                                 Stories
                             </Button>
                         </Box>
@@ -315,12 +330,44 @@ function Write (){
                         />
                     </Box>
 
+                    <Typography fontFamily="GT Bold" fontSize="30px">Author</Typography>
                     <TextField
                         type="text"
                         name="author"
                         value={formData.author}
                         onChange={handleChange}
                         placeholder="Author"
+                        InputProps={{ style: { color: 'white' } }}
+                        sx={{
+                            '& .MuiOutlinedInput-root': {
+                              '& fieldset': {
+                                borderColor: '#3C364A', // Default border color
+                              },
+                              '&:hover fieldset': {
+                                borderColor: 'white', // Border color on hover
+                              },
+                              '&.Mui-focused fieldset': {
+                                borderColor: 'white', // Border color when focused
+                              },
+                            },
+                            '& .MuiInputLabel-root': {
+                              color: 'grey', // Label color
+                            },
+                            '& .MuiInputLabel-root.Mui-focused': {
+                              color: 'white', // Label color when focused
+                            },
+                            mb:'20px',
+                            mt:'20px'
+                          }}
+
+                    />
+
+                    <Typography fontFamily="GT Bold" fontSize="30px">Date</Typography>
+                    <TextField
+                        type="date"
+                        name="date"
+                        value={formData.date}
+                        onChange={handleChange}
                         InputProps={{ style: { color: 'white' } }}
                         sx={{
                             '& .MuiOutlinedInput-root': {
@@ -437,7 +484,7 @@ function Write (){
                                 </Button>
                     </Box>
 
-                    <Button variant="contained" sx={{fontFamily:'GT Bold',  backgroundColor:"#6D54B5"}}>POST STORY</Button>
+                    <Button type="submit" variant="contained" sx={{fontFamily:'GT Bold',  backgroundColor:"#6D54B5"}}>POST STORY</Button>
                     
                 </form>
 

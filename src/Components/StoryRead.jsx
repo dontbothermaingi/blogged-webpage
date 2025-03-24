@@ -8,19 +8,24 @@ import { useNavigate, useParams } from "react-router";
 
 function StoryRead (){
 
-    const [story, setStory] = useState({})
+    const [story, setStory] = useState(null)
     const {storyId} = useParams()
     const navigate = useNavigate()
     const [searchTerm, setSearchTerm] = useState("")
 
     useEffect(()=>{
-        fetch(`https://blogged-server.onrender.com/story/${storyId}`)
+        fetch(`https://blogged-db.onrender.com/story/${storyId}`)
         .then(response => response.json())
         .then((data) => {
             setStory(data);
+            console.log(data)
         })
         .catch(error => console.error("Error fetching story:", error));
     }, [storyId]);
+    
+    if (!story) {
+        return <Typography>Loading story...</Typography>;
+    }
 
     function handleHome(){
         navigate('/')  
@@ -28,6 +33,23 @@ function StoryRead (){
 
     function handleStories(){
         navigate('/stories')  
+    }
+
+    function deleteStory(event){
+        event.preventDefault()
+
+        fetch(`https://blogged-db.onrender.com/story/${storyId}`,{
+            method:'DELETE'
+        })
+        .then(response => {
+            if(!response.ok){
+                throw new Error("Network response is not ok")
+            }
+            return response.json()
+        })
+        .then((data) => {
+            navigate('/stories')
+        })
     }
 
     return ( 
@@ -116,6 +138,10 @@ function StoryRead (){
                             <Typography style={{fontFamily:'GT Regular', color:'white', fontSize:'21px'}}>{story.date}</Typography>
                         </Box>
 
+                        <Box mt={'30px'}>
+                            <Button onClick={deleteStory} variant="contained" sx={{backgroundColor:'red', color:'white', fontFamily:'GT Bold'}}>DELETE</Button>
+                        </Box>
+
                         <Button 
                           variant="contained"
                           style={{backgroundColor:'white', borderRadius:'20px'}}
@@ -134,23 +160,17 @@ function StoryRead (){
 
                         <Box>
                             <img 
-                            src={`https://blogged-server.onrender.com/${story.images}`}
-                            alt="Image"
+                                src={`https://blogged-db.onrender.com${story.photo}`}
+                                alt="Image"
                             />
                         </Box>
 
                         <Box width={'80%'} display={'flex'} flexDirection={'column'} gap={'20px'}>
-                            <Typography style={{fontFamily:'GT Medium', color:'white', fontSize:'22px'}}>{story.contentparagraph1}</Typography>
-                            <Typography style={{fontFamily:'GT Regular', color:'white', fontSize:'22px'}}>{story.contentparagraph2}</Typography>
-                            <Typography style={{fontFamily:'GT Regular', color:'white', fontSize:'22px'}}>{story.contentparagraph3}</Typography>
-                            <Typography style={{fontFamily:'GT Regular', color:'white', fontSize:'22px'}}>{story.contentparagraph4}</Typography>
-                            <Typography style={{fontFamily:'GT Regular', color:'white', fontSize:'22px'}}>{story.contentparagraph5}</Typography>
-                            <Typography style={{fontFamily:'GT Regular', color:'white', fontSize:'22px'}}>{story.contentparagraph6}</Typography>
-                            <Typography style={{fontFamily:'GT Regular', color:'white', fontSize:'22px'}}>{story.contentparagraph7}</Typography>
-                            <Typography style={{fontFamily:'GT Regular', color:'white', fontSize:'22px'}}>{story.contentparagraph8}</Typography>
-                            <Typography style={{fontFamily:'GT Regular', color:'white', fontSize:'22px'}}>{story.contentparagraph9}</Typography>
-                            <Typography style={{fontFamily:'GT Regular', color:'white', fontSize:'22px'}}>{story.contentparagraph10}</Typography>
+                            {story.paragraphs.map((paragraph, index) => (
+                                <Typography key={index} style={{fontFamily:'GT Light', color:'white', fontSize:'22px'}}>{paragraph.paragraph}</Typography>
+                            ))}
                         </Box>
+
                     </Box>
             </Box>
         </Box>
