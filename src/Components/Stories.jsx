@@ -144,9 +144,9 @@ function Stories (){
                     <Box display={'flex'} justifyContent={'space-between'} flexDirection={'column'} margin={0}>
 
                         <Button onClick={closeFilter} variant="contained" sx={{fontFamily:"GT Bold"}}>{filter ? "Hide Filter" : "Show Filter"}</Button>
-                        <Box display={'flex'} flexDirection={'column'} alignItems={"center"}>
+                        <Box ml={'20px'}>
                             {filter && 
-                                <Box ml={'20px'}>
+                                <Box>
                                     <Typography style={{fontFamily:'GT Bold'}} fontSize={"29px"} mb="20px"  mt={'30px'}>Filters</Typography>
                                     <Box display={'flex'} flexDirection={'column'} gap={'10px'}>
                                         <Box display={'flex'} alignItems={'center'} gap={'20px'}>
@@ -218,7 +218,7 @@ function Stories (){
                                 </Box>
                             }
 
-                            <Typography style={{fontFamily:'GT Bold'}} fontSize={'23.5px'} mt={'20px'} mb={'20px'}> Trending and Interesting.</Typography>
+                            <Typography style={{fontFamily:'GT Bold'}} fontSize={'23.5px'} mt={'20px'} mb={'20px'} textAlign={'center'}> Trending and Interesting.</Typography>
 
                         </Box>
 
@@ -244,7 +244,7 @@ function Stories (){
                                             display: 'flex',
                                             flexDirection: 'column',
                                             padding:'10px',
-                                            height: '800px',
+                                            height: '750px',
                                             boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
                                             backgroundColor: '#2D2D2D',
                                             transition: 'transform 0.3s ease-in-out',
@@ -271,7 +271,7 @@ function Stories (){
                                         <CardContent>
                                             <Box display={'flex'} flexDirection={'column'} justifyContent={'space-between'} height={'285px'}>
                                                 <Box>
-                                                    <Typography style={{fontFamily:'GT Medium', color:'white'}} textAlign={'left'} fontSize={'25px'}>{story.title}</Typography>
+                                                    <Typography style={{fontFamily:'GT Medium', color:'white'}} textAlign={'center'} fontSize={'25px'} mb={'10px'}>{story.title}</Typography>
                                                     <Typography style={{fontFamily:'GT Light', color:'white'}} textAlign={'left'} fontSize={'15px'}>{story.paragraphs[0].paragraph}</Typography>
                                                 </Box>
                                                 <Box mt={'20px'}>
