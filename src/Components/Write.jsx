@@ -1,8 +1,9 @@
 import { AddOutlined, DeleteForever, GitHub, LightbulbOutlined, LinkedIn } from "@mui/icons-material";
 import { Alert, Button, FormControl, IconButton, MenuItem, Select, Snackbar, TextField, Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import { Box, useMediaQuery } from "@mui/system";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router";
+import MenuIcon from '@mui/icons-material/Menu';
 
 function Write (){
 
@@ -19,6 +20,7 @@ function Write (){
     const [successMessage, setSuccesMessage] = useState("")
     const [openSnackBar, setOpenSnackBar] = useState(false)
     const [filePreview, setFilePreview] = useState("");
+    const isMobile = useMediaQuery("(max-width:768px)")
     const fileUploadRef = useRef();
     const navigate = useNavigate();
 
@@ -135,6 +137,10 @@ function Write (){
         navigate('/stories')
     }
 
+    function handleHome(){
+        navigate('/')  
+    }
+
     const storyCategories = [
     "Adventure",
     "Business",
@@ -170,48 +176,68 @@ function Write (){
     return ( 
 
         <Box display={'flex'} flexDirection={'column'}>
-            <Box 
-                display="flex"
-                alignItems="center"
-                justifyContent="space-between"
-            > 
-                    <Box display={'flex'} gap={'20px'}>
+
+            {isMobile ? (
+                    <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'}>
                         <Box display={'flex'} flexDirection={'row'} alignItems={'center'}>
                             <IconButton sx={{color:'white'}}>
-                                <LightbulbOutlined sx={{fontSize:'33px'}}/>
+                                <LightbulbOutlined sx={{fontSize:'28px'}}/>
                             </IconButton>
-                            <Typography style={{fontFamily: 'GT Bold', cursor:"pointer"}} fontSize={'35px'}>Blogged</Typography>
+                            <Typography style={{fontFamily:'GT Bold', cursor:"pointer"}} fontSize={'28px'} onClick={handleHome}>Blogged</Typography>
                         </Box>
+
+                        <Box>
+                            <IconButton>
+                                <MenuIcon sx={{color:'white'}}/>
+                            </IconButton>
+                        </Box>
+                    </Box>     
+            ):(
+                    <Box 
+                        display="flex"
+                        alignItems="center"
+                        justifyContent="space-between"
+                        padding={'20px'}
+                    > 
+                            <Box display={'flex'} gap={'20px'}>
+                                <Box display={'flex'} flexDirection={'row'} alignItems={'center'}>
+                                    <IconButton sx={{color:'white'}}>
+                                        <LightbulbOutlined sx={{fontSize:'33px'}}/>
+                                    </IconButton>
+                                    <Typography style={{fontFamily: 'GT Bold', cursor:"pointer"}} fontSize={'35px'}>Blogged</Typography>
+                                </Box>
+                            </Box>
+
+                            <a href={'https://www.linkedin.com/in/denis-maingi-8a987a305/'} style={{textDecoration:'none', color:'white'}}>
+                                <Box display={'flex'} flexDirection={'row'} alignItems={'center'}>
+                                        <IconButton sx={{color:'white'}}>
+                                            <LinkedIn sx={{fontSize:'33px'}}/>
+                                        </IconButton>
+                                        <Typography style={{fontFamily:'GT Bold', cursor:'pointer', color:'white'}} fontSize={'25px'}>Denis Maingi</Typography>
+                                </Box>
+                            </a>
+
+                            <a href={'https://github.com/dontbothermaingi'} style={{textDecoration:'none', color:'white'}}>
+                                <Box display={'flex'} flexDirection={'row'} alignItems={'center'}>
+                                        <IconButton sx={{color:'white'}}>
+                                            <GitHub sx={{fontSize:'33px'}}/>
+                                        </IconButton>
+                                        <Typography style={{fontFamily:'GT Bold', cursor:'pointer', color:'white'}} fontSize={'25px'}>dontbothermaingi</Typography>
+                                </Box>
+                            </a>
+
+                            <Box display={'flex'} gap={'20px'} alignItems={'center'}>
+                                <Box display={'flex'} flexDirection={'row'} alignItems={'center'}>
+                                    <Button onClick={handleStories} sx={{color:'black', backgroundColor:'white', fontFamily:'GT Bold', fontSize:'18px'}} >
+                                        Stories
+                                    </Button>
+                                </Box>
+                            </Box>
                     </Box>
+            )}
 
-                    <a href={'https://www.linkedin.com/in/denis-maingi-8a987a305/'} style={{textDecoration:'none', color:'white'}}>
-                        <Box display={'flex'} flexDirection={'row'} alignItems={'center'}>
-                                <IconButton sx={{color:'white'}}>
-                                    <LinkedIn sx={{fontSize:'33px'}}/>
-                                </IconButton>
-                                <Typography style={{fontFamily:'GT Bold', cursor:'pointer', color:'white'}} fontSize={'25px'}>Denis Maingi</Typography>
-                        </Box>
-                    </a>
 
-                    <a href={'https://github.com/dontbothermaingi'} style={{textDecoration:'none', color:'white'}}>
-                        <Box display={'flex'} flexDirection={'row'} alignItems={'center'}>
-                                <IconButton sx={{color:'white'}}>
-                                    <GitHub sx={{fontSize:'33px'}}/>
-                                </IconButton>
-                                <Typography style={{fontFamily:'GT Bold', cursor:'pointer', color:'white'}} fontSize={'25px'}>dontbothermaingi</Typography>
-                        </Box>
-                    </a>
-
-                    <Box display={'flex'} gap={'20px'} alignItems={'center'}>
-                        <Box display={'flex'} flexDirection={'row'} alignItems={'center'}>
-                            <Button onClick={handleStories} sx={{color:'black', backgroundColor:'white', fontFamily:'GT Bold', fontSize:'18px'}} >
-                                Stories
-                            </Button>
-                        </Box>
-                    </Box>
-            </Box>
-
-            <Box padding={'90px'}>
+            <Box padding={{md:'90px', xs:'0px'}}>
                 <Snackbar
                     open={openSnackBar}
                     autoHideDuration={6000}
@@ -223,7 +249,7 @@ function Write (){
                     </Alert>
                 </Snackbar>
 
-                <Typography fontFamily={"GT Bold"} fontSize={'40px'} textAlign={'center'} padding={'30px'}>WRITE NEW STORY</Typography>
+                <Typography fontFamily={"GT Bold"} fontSize={{md:'40px', xs:'25px'}} textAlign={'center'} mb={'20px'} mt={{xs:'20px', md:'0px'}}>WRITE NEW STORY</Typography>
 
                 <form onSubmit={handleSubmit} style={{display:'flex', flexDirection:'column', justifyContent:'center',border:'2px dashed #ddd', padding:'30px', borderRadius:'15px'}}>
                     <TextField
@@ -232,7 +258,7 @@ function Write (){
                         value={formData.title}
                         onChange={handleChange}
                         placeholder="Story Title..."
-                        InputProps={{ style: { color: 'white', fontSize:'40px', textAlign:'center' } }}
+                        InputProps={{ style: { color: 'white', fontSize:{xs:"20px", md:'40px'}, textAlign:'center' } }}
                         sx={{
                             '& .MuiOutlinedInput-root': {
                               '& fieldset': {
@@ -256,7 +282,8 @@ function Write (){
 
                     />
 
-                    <Box>
+                    {isMobile ? (
+                        <Box>
                         {/* Drag and Drop Area */}
                         <Box 
                             onClick={handleImageUpload}
@@ -266,7 +293,7 @@ function Write (){
                         >
                             <Box 
                                 border={"2px dashed #ddd"} 
-                                width={'600px'} 
+                                width={'100%'} 
                                 height={'300px'} 
                                 borderRadius={'15px'} 
                                 display={'flex'} 
@@ -274,7 +301,7 @@ function Write (){
                                 flexDirection={'column'} 
                                 alignItems={'center'}
                                 position="relative"
-                                padding={'20px'}
+                                // padding={'20px'}
                                 margin={'auto'}
                                 sx={{
                                     transition:"transform 0.3s ease-in-out",
@@ -301,15 +328,15 @@ function Write (){
                                                 <img 
                                                     src="upload.png"
                                                     alt="Photo Upload"
-                                                    style={{width:"120px", height:"auto"}}
+                                                    style={{width:"100px", height:"auto"}}
                                                 />
                                                 </Box>
 
                                                 <Box display={'flex'} alignItems={'center'} flexDirection={'column'}>
-                                                    <Typography fontFamily={'GT Medium'} fontSize={'25px'}>
+                                                    <Typography fontFamily={'GT Medium'} fontSize={'15px'}>
                                                         Drop your image here or browse
                                                     </Typography>
-                                                    <Typography fontFamily={'GT Light'}>
+                                                    <Typography fontFamily={'GT Light'} fontSize={'12px'}>
                                                         Supports: PNG, JPG, JPEG, WEBP
                                                     </Typography>
                                                 </Box>
@@ -328,7 +355,83 @@ function Write (){
                             onChange={handleFileChange}
                             ref={fileUploadRef}
                         />
-                    </Box>
+                        </Box>                
+                    ):(
+                        <Box>
+                            {/* Drag and Drop Area */}
+                            <Box 
+                                onClick={handleImageUpload}
+                                // onDragOver={handleDragOver}
+                                // onDrop={handleDrop}
+                                // onDragLeave={handleDragLeave}
+                            >
+                                <Box 
+                                    border={"2px dashed #ddd"} 
+                                    width={'600px'} 
+                                    height={'300px'} 
+                                    borderRadius={'15px'} 
+                                    display={'flex'} 
+                                    justifyContent={'center'} 
+                                    flexDirection={'column'} 
+                                    alignItems={'center'}
+                                    position="relative"
+                                    padding={'20px'}
+                                    margin={'auto'}
+                                    sx={{
+                                        transition:"transform 0.3s ease-in-out",
+                                        ":hover":{
+                                            transform:'scale(1.03)',
+                                        }
+                                    }}
+                                >
+                                    {/* Show uploaded image if available */}
+                                    {filePreview ? (
+                                        <img 
+                                            src={filePreview}
+                                            alt="Uploaded Preview"
+                                            style={{
+                                                width: "100%",
+                                                height: "100%",
+                                                objectFit: "contain",
+                                                borderRadius: "15px"
+                                            }}
+                                        />
+                                        ) : (
+                                                <>
+                                                    <Box display={'flex'} justifyContent={'center'}>
+                                                    <img 
+                                                        src="upload.png"
+                                                        alt="Photo Upload"
+                                                        style={{width:"120px", height:"auto"}}
+                                                    />
+                                                    </Box>
+
+                                                    <Box display={'flex'} alignItems={'center'} flexDirection={'column'}>
+                                                        <Typography fontFamily={'GT Medium'} fontSize={'25px'}>
+                                                            Drop your image here or browse
+                                                        </Typography>
+                                                        <Typography fontFamily={'GT Light'}>
+                                                            Supports: PNG, JPG, JPEG, WEBP
+                                                        </Typography>
+                                                    </Box>
+                                                </>
+                                    )}
+                                </Box>
+
+                                {filePreview && <Button onClick={() => handleImageUpload()} sx={{fontFamily:'GT Bold', backgroundColor:'white', color:'orange', ml:'520px', mt:'20px'}}>Change Photo</Button>}
+                            </Box>
+
+                            <input 
+                                type="file"
+                                name="photo"
+                                accept="image/*"
+                                hidden
+                                onChange={handleFileChange}
+                                ref={fileUploadRef}
+                            />
+                        </Box>
+                    )}
+                    
 
                     <Typography fontFamily="GT Bold" fontSize="30px">Author</Typography>
                     <TextField
