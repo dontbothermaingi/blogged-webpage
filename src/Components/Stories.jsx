@@ -218,13 +218,12 @@ function Stories (){
                                 </Box>
                             }
 
-                            <Typography style={{fontFamily:'GT Bold'}} fontSize={'23.5px'} mt={'20px'} mb={'20px'} textAlign={'center'}> Trending and Interesting.</Typography>
-
                         </Box>
 
                         <Box>
 
-                            <Box mb={'20px'} gap={'20px'} display={'flex'}>
+                            <Typography style={{fontFamily:'GT Bold'}} fontSize={'23px'} mt={'20px'} mb={'20px'} textAlign={'center'}> Trending and Interesting.</Typography>
+                            <Box mb={'20px'} gap={'20px'} display={'flex'} justifyContent={'center'}>
                                 <Button variant="contained" style={{backgroundColor:"#2D2D2D", borderRadius:'10px'}}><Typography style={{fontFamily:"GT Regular", padding:'4px'}} fontSize={'12px'}>Filter by: {display ? <span style={{fontFamily:'GT Bold'}}>{selectedGenre}</span>:(<span style={{fontFamily:'GT Bold'}}>none</span>)}</Typography></Button>
                                 <Button onClick={() => setSelectedGenre("")} variant="contained" style={{backgroundColor:"#2D2D2D", borderRadius:'10px'}}><Typography style={{fontFamily:"GT Regular"}} fontSize={'12px'}>Clear Filter</Typography></Button>
                             </Box>
