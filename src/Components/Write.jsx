@@ -433,7 +433,7 @@ function Write (){
                     )}
                     
 
-                    <Typography fontFamily="GT Bold" fontSize="30px">Author</Typography>
+                    <Typography fontFamily="GT Medium" fontSize={{md:"30px", xs:'18px'}} mt={'20px'}>Author</Typography>
                     <TextField
                         type="text"
                         name="author"
@@ -460,12 +460,11 @@ function Write (){
                               color: 'white', // Label color when focused
                             },
                             mb:'20px',
-                            mt:'20px'
                           }}
 
                     />
 
-                    <Typography fontFamily="GT Bold" fontSize="30px">Date</Typography>
+                    <Typography fontFamily="GT Medium"  fontSize={{md:"30px", xs:'18px'}} mt={'20px'}>Date</Typography>
                     <TextField
                         type="date"
                         name="date"
@@ -491,13 +490,12 @@ function Write (){
                               color: 'white', // Label color when focused
                             },
                             mb:'20px',
-                            mt:'20px'
                           }}
 
                     />
 
                     <FormControl fullWidth sx={{ mb: '20px', mt: '20px' }}>
-                        <Typography fontFamily="GT Bold" fontSize="30px">
+                        <Typography fontFamily="GT Medium"  fontSize={{md:"30px", xs:'18px'}} mt={'20px'}>
                             Category
                         </Typography>
                         <Select
@@ -538,7 +536,7 @@ function Write (){
 
 
                     <Box>
-                        <Typography fontFamily={"GT Bold"} fontSize={'30px'} mb={'10px'}>Body</Typography>
+                        <Typography fontFamily={"GT Medium"}  fontSize={{md:"30px", xs:'20px'}} mt={'18px'}>Body</Typography>
 
                         {storyData.map((story,index) => (
                             <Box key={index} display={'flex'} alignItems={'center'} gap={'20px'}>
